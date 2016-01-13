@@ -10,9 +10,10 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-            $position = (isset($_GET['board'])) ? $_GET['board'] : null;
-            $squares = str_split($position); 
+         <?php
+            $position = $_GET['board'];
+            $squares = str_split($position);             
+
             function winner($token,$position){
                 $won = false;
                 if (($position[0] == $token) && 
@@ -50,7 +51,10 @@ and open the template in the editor.
                 }
                 return $won;
             }
-
+            
+            if (winner('x',$squares)){ echo 'You win.';}
+            else if (winner('o',$squares)){ echo 'I win.';}
+            else {echo 'No winner yet.';} 
         ?>
     </body>
 </html>
