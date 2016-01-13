@@ -6,14 +6,14 @@
 
     <style type="text/css">
     table {
-      table-layout: fixed;
-      width: 300px;
+		table-layout: fixed;
+		width: 300px;
     }
     td {
-      border: 1px solid #c2c2c2;
-      text-align:center;
-      vertical-align: middle;
-      height: 100px;
+		border: 1px solid #c2c2c2;
+		text-align:center;
+		vertical-align: middle;
+		height: 100px;
     }
 
     </style>
@@ -24,8 +24,8 @@
     class Game {
      
 		var $position;
-      
 		var $finished;
+		
 		public function __construct($position) {
 			$board = $position;
 			if (empty($position))
@@ -41,8 +41,7 @@
         if ($this->winner('x')) {
 			$this->finished = true;
 			$message = 'You win.';
-        }
-       
+        }  
         else {
 			$this->pick_move();
          
@@ -51,7 +50,6 @@
 				$message = 'I win.';
 			}
         }
-
         if (!$this->finished && $this->tied()) {
 			$message = 'Tied game.';
         }
@@ -103,21 +101,18 @@
 		}
 		//check if there is a winner
 		private function winner($token) {
-
 			for ($row = 0; $row < 3; $row++) {
 				if (($this->position[3 * $row]     == $token) &&
 					($this->position[3 * $row + 1] == $token) &&
 					($this->position[3 * $row + 2] == $token))
 				return true;
 			}
-
 			for ($col = 0; $col < 3; $col++) {
 				if (($this->position[$col] == $token) &&
 					($this->position[$col + 3] == $token) &&
 					($this->position[$col + 6] == $token))
 				return true;
 			}
-
 			if ($this->position[0] == $token &&
 				($this->position[4] == $token) &&
 				($this->position[8] == $token)) {
@@ -135,6 +130,6 @@
     $position = (isset($_GET['board'])) ? $_GET['board'] : null;
     $game = new Game($position);
     $game->play();
-  ?>
+	?>
 </body>
 </html>
